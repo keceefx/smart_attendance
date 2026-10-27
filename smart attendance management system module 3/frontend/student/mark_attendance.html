@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mark Attendance | Smart Attendance System</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="../assets/css/custom.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<nav class="navbar navbar-dark bg-dark px-3 py-2">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="student_index.html">
+    <i class="fa-solid fa-arrow-left me-2"></i> Back to Dashboard
+  </a>
+  </div>
+</nav>
+
+<div class="container py-5" style="max-width: 500px;">
+<div class="card border-0 shadow-sm rounded-3">
+  <div class="card-body p-4 text-center">
+
+<div class="mb-3">
+  <span  class="badge bg-primary-subtle text-primary p-3 rounded-circle">
+    <i class="fa-solid fa-qrcode fs-2"></i>
+  </span>
+  </div>
+                <h4 class="fw-bold mb-1">Mark Active Attendance</h4>
+                <p class="text-muted small mb-4">Enter the 6-digit passcode displayed by your lecturer.</p>
+
+                <div id="attendanceAlert" class="alert alert-danger d-none text-start small"></div>
+
+                <form id="markAttendanceForm">
+                    <div class="mb-4">
+                        <label for="passcodeInput" class="form-label text-muted extra-small fw-bold text-uppercase">Session Passcode</label>
+                        <input type="text" id="passcodeInput" class="form-control form-control-lg text-center fw-bold fs-3 letter-spacing" maxlength="6" placeholder="000000" required autocomplete="off">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 py-2 fw-bold shadow-sm mb-3">
+                        <i class="fa-solid fa-check-circle me-1"></i> Submit Passcode
+                    </button>
+                </form>
+
+                <div class="border-top pt-3 mt-3">
+                    <p class="text-muted extra-small mb-2">Alternatively, scan for nearby lecturer beacon:</p>
+                    <button type="button" id="btnBluetoothScan" class="btn btn-outline-secondary btn-sm w-100">
+                        <i class="fa-brands fa-bluetooth me-1"></i> Verify via Bluetooth
+                    </button>
+                     </div>
+                   </div>
+                  </div>
+                </div>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+                <script src="student_app.js"></script>
+                </body>
+                </html>

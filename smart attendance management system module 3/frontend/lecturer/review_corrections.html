@@ -1,0 +1,178 @@
+F<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Attendance Appeals | Smart Attendance Management System</title>
+    
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-light">
+
+    <!-- Top Navigation Bar -->
+    <nav class="navbar navbar-dark bg-dark px-3 py-2 shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="lecturer_index.html">
+                <i class="fa-solid fa-arrow-left me-2"></i> Back to Lecturer Dashboard
+            </a>
+            <span class="navbar-text text-white small d-none d-md-inline">
+                <i class="fa-solid fa-clipboard-check me-1"></i> Appeals & Corrections Management
+            </span>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container py-4">
+        
+        <!-- Header & Stats Banner -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h4 class="fw-bold mb-1"><i class="fa-solid fa-triangle-exclamation text-warning me-2"></i> Student Correction Appeals</h4>
+                <p class="text-muted small mb-0">Review missed attendance claims and update records accordingly.</p>
+            </div>
+            <span class="badge bg-warning-subtle text-warning border border-warning px-3 py-2 rounded-pill fw-bold">
+                <i class="fa-solid fa-clock me-1"></i> 3 Pending Requests
+            </span>
+        </div>
+
+        <!-- Appeals Review Table Card -->
+        <div class="card border-0 shadow-sm rounded-3">
+            <div class="card-body p-4">
+                
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead class="table-light extra-small text-uppercase text-muted">
+                            <tr>
+                                <th>Student Info</th>
+                                <th>Course & Session</th>
+                                <th>Reason / Explanation</th>
+                                <th>Supporting Proof</th>
+                                <th>Status</th>
+                                <th class="text-end">Decision</th>
+                            </tr>
+                        </thead>
+                        <tbody class="small">
+                            
+                            <!-- Pending Appeal 1 -->
+                            <tr id="appealRow1">
+                                <td>
+                                    <strong class="d-block text-dark">Ojo Kessy Kessena</strong>
+                                    <span class="text-muted extra-small">Matric: FUPRE/SEN/2022/1042</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-primary-subtle text-primary fw-bold mb-1">SEN 226</span>
+                                    <span class="d-block text-muted extra-small">Aug 14, 2026 | 09:00 AM</span>
+                                </td>
+                                <td>
+                                    <p class="mb-0 text-truncate" style="max-width: 220px;" title="Bluetooth beacon connection timed out while present in Room 402.">
+                                        Bluetooth beacon connection timed out while present in Room 402.
+                                    </p>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary py-0 px-2 extra-small" data-bs-toggle="modal" data-bs-target="#proofModal">
+                                        <i class="fa-solid fa-paperclip me-1"></i> View Attachment
+                                    </button>
+                                </td>
+                                <td><span class="badge bg-warning-subtle text-warning fw-bold" id="statusBadge1">Pending</span></td>
+                                <td class="text-end">
+                                    <div class="btn-group btn-group-sm" id="actionBtnGroup1">
+                                        <button class="btn btn-success fw-bold px-2" onclick="handleDecision(1, 'Approved')">
+                                            <i class="fa-solid fa-check me-1"></i> Approve
+                                        </button>
+                                        <button class="btn btn-outline-danger fw-bold px-2" onclick="handleDecision(1, 'Rejected')">
+                                            <i class="fa-solid fa-xmark me-1"></i> Reject
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Pending Appeal 2 -->
+                            <tr id="appealRow2">
+                                <td>
+                                    <strong class="d-block text-dark">David Okon</strong>
+                                    <span class="text-muted extra-small">Matric: FUPRE/INS/2022/1088</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-info-subtle text-info fw-bold mb-1">INS 222</span>
+                                    <span class="d-block text-muted extra-small">Aug 12, 2026 | 11:00 AM</span>
+                                </td>
+                                <td>
+                                    <p class="mb-0 text-truncate" style="max-width: 220px;" title="Submitted medical clearance from University Health Centre.">
+                                        Submitted medical clearance from University Health Centre.
+                                    </p>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary py-0 px-2 extra-small" data-bs-toggle="modal" data-bs-target="#proofModal">
+                                        <i class="fa-solid fa-file-pdf me-1"></i> View Medical Slip
+                                    </button>
+                                </td>
+                                <td><span class="badge bg-warning-subtle text-warning fw-bold" id="statusBadge2">Pending</span></td>
+                                <td class="text-end">
+                                    <div class="btn-group btn-group-sm" id="actionBtnGroup2">
+                                        <button class="btn btn-success fw-bold px-2" onclick="handleDecision(2, 'Approved')">
+                                            <i class="fa-solid fa-check me-1"></i> Approve
+                                        </button>
+                                        <button class="btn btn-outline-danger fw-bold px-2" onclick="handleDecision(2, 'Rejected')">
+                                            <i class="fa-solid fa-xmark me-1"></i> Reject
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Proof Document Modal Preview -->
+    <div class="modal fade" id="proofModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-dark text-white py-2">
+                    <h6 class="modal-title fw-bold"><i class="fa-solid fa-file-image me-2 text-warning"></i> Attachment Preview</h6>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center p-4">
+                    <div class="p-5 border rounded bg-light text-muted mb-2">
+                        <i class="fa-solid fa-file-lines fs-1 d-block mb-2 text-secondary"></i>
+                        <span class="extra-small d-block">Simulated Attachment Document</span>
+                        <strong class="small text-dark">Proof_Of_Presence_Doc.pdf</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Local Offline Scripts -->
+    <script src="../assets/vendor/js/bootstrap.bundle.min.js"></script>
+
+   
+<!-- Bootstrap JS Bundle (Place this first) -->
+    <script src="../../assets/vendor/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Your Custom JavaScript (Place this second) -->
+    <script>
+        function handleDecision(rowId, decision) {
+            const statusBadge = document.getElementById(`statusBadge${rowId}`);
+            const actionGroup = document.getElementById(`actionBtnGroup${rowId}`);
+
+            if (decision === 'Approved') {
+                statusBadge.className = "badge bg-success-subtle text-success fw-bold";
+                statusBadge.textContent = "Approved";
+            } else {
+                statusBadge.className = "badge bg-danger-subtle text-danger fw-bold";
+                statusBadge.textContent = "Rejected";
+            }
+
+            actionGroup.innerHTML = `<span class="text-muted extra-small"><i class="fa-solid fa-check-double me-1"></i> Resolved</span>`;
+        }
+    </script>
+
+</body>
+</html>

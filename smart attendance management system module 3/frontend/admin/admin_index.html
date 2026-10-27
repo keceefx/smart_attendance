@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | AlphaSoft Systems</title>
+
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-light">
+
+    <!-- Top Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm px-4">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="fa-solid fa-shield-halved text-danger me-2"></i> AlphaSoft Admin Portal
+            </a>
+            <div class="d-flex align-items-center">
+                <span class="text-white small me-3"><i class="fa-solid fa-user-gear me-1"></i> Admin: <strong>KCEE</strong></span>
+                <a href="../index.html" class="btn btn-sm btn-outline-danger">
+                    <i class="fa-solid fa-right-from-bracket me-1"></i> Logout
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Optional Admin Login Verification Widget (for testing credentials) -->
+    <div class="container py-3">
+        <div class="card border-0 shadow-sm p-3 mb-4 bg-white">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h6 class="fw-bold mb-1"><i class="fa-solid fa-key text-danger me-2"></i> Quick Admin Access Tester</h6>
+                    <p class="text-muted extra-small mb-0">Authorized Admin ID: <code>KCEE</code> | Default Master Password: <code>Ojo</code></p>
+                </div>
+                <div class="col-md-4">
+                    <form id="adminLoginForm" class="d-flex gap-2">
+                        <input type="text" id="adminIdInput" class="form-control form-control-sm" placeholder="Admin ID (KCEE)" required>
+                        <input type="password" id="adminPasswordInput" class="form-control form-control-sm" placeholder="Password (Ojo)" required>
+                        <button type="submit" class="btn btn-sm btn-danger fw-bold">Verify</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container-fluid px-4 pb-5">
+
+        <!-- System Stats Bar -->
+        <div class="row g-3 mb-4">
+            <div class="col-md-3">
+                <div class="card border-0 shadow-sm rounded-3 p-3 bg-white">
+                    <div class="d-flex align-items-center">
+                        <div class="bg-primary text-white rounded-3 p-3 me-3"><i class="fa-solid fa-graduation-cap fs-4"></i></div>
+                        <div>
+                            <h6 class="text-muted small mb-0">Total Students</h6>
+                            <h4 class="fw-bold mb-0">1,240</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card border-0 shadow-sm rounded-3 p-3 bg-white">
+                    <div class="d-flex align-items-center">
+                        <div class="bg-dark text-white rounded-3 p-3 me-3"><i class="fa-solid fa-user-tie fs-4"></i></div>
+                        <div>
+                            <h6 class="text-muted small mb-0">Total Lecturers</h6>
+                            <h4 class="fw-bold mb-0">85</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card border-0 shadow-sm rounded-3 p-3 bg-white">
+                    <div class="d-flex align-items-center">
+                        <div class="bg-danger text-white rounded-3 p-3 me-3"><i class="fa-solid fa-book fs-4"></i></div>
+                        <div>
+                            <h6 class="text-muted small mb-0">Active Courses</h6>
+                            <h4 class="fw-bold mb-0">42</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card border-0 shadow-sm rounded-3 p-3 bg-white">
+                    <div class="d-flex align-items-center">
+                        <div class="bg-warning text-dark rounded-3 p-3 me-3"><i class="fa-solid fa-building fs-4"></i></div>
+                        <div>
+                            <h6 class="text-muted small mb-0">Registered Venues</h6>
+                            <h4 class="fw-bold mb-0">18</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 1: Users Registration Controls -->
+        <div class="row g-4 mb-4">
+            
+            <!-- Student Registry -->
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm rounded-3 h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="fw-bold mb-0"><i class="fa-solid fa-graduation-cap text-primary me-2"></i> Student Registry</h5>
+                            <button class="btn btn-sm btn-primary fw-bold" data-bs-toggle="modal" data-bs-target="#addStudentModal">
+                                <i class="fa-solid fa-plus me-1"></i> Register Student
+                            </button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle small">
+                                <thead class="table-light text-muted">
+                                    <tr>
+                                        <th>Matric No</th>
+                                        <th>Full Name</th>
+                                        <th>Department</th>
+                                        <th class="text-end">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="studentTableBody">
+                                    <tr>
+                                        <td><code>FUPRE/SEN/2022/1042</code></td>
+                                        <td>Ojo Kessy Kessena</td>
+                                        <td>Software Engineering</td>
+                                        <td class="text-end">
+                                            <button class="btn btn-sm btn-outline-primary py-0 me-1 btn-edit"><i class="fa-solid fa-pen"></i></button>
+                                            <button class="btn btn-sm btn-outline-danger py-0 btn-delete"><i class="fa-solid fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lecturer Registry -->
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm rounded-3 h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="fw-bold mb-0"><i class="fa-solid fa-user-tie text-dark me-2"></i> Lecturer Registry</h5>
+                            <button class="btn btn-sm btn-dark fw-bold" data-bs-toggle="modal" data-bs-target="#addLecturerModal">
+                                <i class="fa-solid fa-plus me-1"></i> Register Lecturer
+                            </button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle small">
+                                <thead class="table-light text-muted">
+                                    <tr>
+                                        <th>Staff ID</th>
+                                        <th>Full Name</th>
+                                        <th>Department</th>
+                                        <th class="text-end">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="lecturerTableBody">
+                                    <tr>
+                                        <td><code>LEC/SEN/001</code></td>
+                                        <td>Dr. Emmanuel Okoro</td>
+                                        <td>Software Engineering</td>
+                                        <td class="text-end">
+                                            <button class="btn btn-sm btn-outline-primary py-0 me-1 btn-edit"><i class="fa-solid fa-pen"></i></button>
+                                            <button class="btn btn-sm btn-outline-danger py-0 btn-delete"><i class="fa-solid fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Row 2: Infrastructure & Curriculum Resources -->
+        <div class="row g-4 mb-4">
+
+            <!-- Courses Management -->
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm rounded-3 h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="fw-bold mb-0"><i class="fa-solid fa-book text-danger me-2"></i> Courses</h5>
+                            <button class="btn btn-sm btn-danger fw-bold" data-bs-toggle="modal" data-bs-target="#addCourseModal">
+                                <i class="fa-solid fa-plus me-1"></i> Add Course
+                            </button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle small">
+                                <thead class="table-light text-muted">
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Title</th>
+                                        <th>Units</th>
+                                        <th class="text-end">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="courseTableBody">
+                                    <tr>
+                                        <td><strong>SEN 226</strong></td>
+                                        <td>Software Engineering Principles</td>
+                                        <td>3</td>
+                                        <td class="text-end">
+                                            <button class="btn btn-sm btn-outline-primary py-0 me-1 btn-edit"><i class="fa-solid fa-pen"></i></button>
+                                            <button class="btn btn-sm btn-outline-danger py-0 btn-delete"><i class="fa-solid fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>INS 222</strong></td>
+                                        <td>Information Systems</td>
+                                        <td>3</td>
+                                        <td class="text-end">
+                                            <button class="btn btn-sm btn-outline-primary py-0 me-1 btn-edit"><i class="fa-solid fa-pen"></i></button>
+                                            <button class="btn btn-sm btn-outline-danger py-0 btn-delete"><i class="fa-solid fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Departments Management -->
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm rounded-3 h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="fw-bold mb-0"><i class="fa-solid fa-sitemap text-danger me-2"></i> Departments</h5>
+                            <button class="btn btn-sm btn-danger fw-bold" data-bs-toggle="modal" data-bs-target="#addDeptModal">
+                                <i class="fa-solid fa-plus me-1"></i> Add Dept
+                            </button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle small">
+                                <thead class="table-light text-muted">
+                                    <tr>
+                                        <th>Faculty</th>
+                                        <th>Department</th>
+                                        <th class="text-end">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="departmentTableBody">
+                                    <tr>
+                                        <td>Computing</td>
+                                        <td>Software Engineering</td>
+                                        <td class="text-end">
+                                            <button class="btn btn-sm btn-outline-primary py-0 me-1 btn-edit"><i class="fa-solid fa-pen"></i></button>
+                                            <button class="btn btn-sm btn-outline-danger py-0 btn-delete"><i class="fa-solid fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Venues Management -->
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm rounded-3 h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="fw-bold mb-0"><i class="fa-solid fa-building text-danger me-2"></i> Venues</h5>
+                            <button class="btn btn-sm btn-danger fw-bold" data-bs-toggle="modal" data-bs-target="#addVenueModal">
+                                <i class="fa-solid fa-plus me-1"></i> Add Venue
+                            </button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle small">
+                                <thead class="table-light text-muted">
+                                    <tr>
+                                        <th>Hall Name</th>
+                                        <th>Capacity</th>
+                                        <th class="text-end">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="venueTableBody">
+                                    <tr>
+                                        <td>Lecture Theatre 1</td>
+                                        <td>250 Seats</td>
+                                        <td class="text-end">
+                                            <button class="btn btn-sm btn-outline-primary py-0 me-1 btn-edit"><i class="fa-solid fa-pen"></i></button>
+                                            <button class="btn btn-sm btn-outline-danger py-0 btn-delete"><i class="fa-solid fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ================= MODALS SECTION ================= -->
+
+    <!-- Modal 1: Register Student -->
+    <div class="modal fade" id="addStudentModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-primary text-white py-2">
+                    <h6 class="modal-title fw-bold"><i class="fa-solid fa-graduation-cap me-2"></i> Register New Student</h6>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="addStudentForm">
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Surname (Default Password)</label>
+                            <input type="text" id="studentSurname" class="form-control" placeholder="e.g. Ojo" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Other Names</label>
+                            <input type="text" id="studentOtherNames" class="form-control" placeholder="e.g. Kessy Kessena" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Matriculation Number (Username)</label>
+                            <input type="text" id="studentMatric" class="form-control" placeholder="e.g. FUPRE/SEN/2022/1042" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Department</label>
+                            <select id="studentDept" class="form-select" required>
+                                <option value="Software Engineering">Software Engineering</option>
+                                <option value="Information Systems">Information Systems</option>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Cyber Security">Cyber Security</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 fw-bold">Register Student</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: Register Lecturer -->
+    <div class="modal fade" id="addLecturerModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-dark text-white py-2">
+                    <h6 class="modal-title fw-bold"><i class="fa-solid fa-user-tie me-2"></i> Register New Lecturer</h6>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="addLecturerForm">
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Title</label>
+                            <select id="lecturerTitle" class="form-select" required>
+                                <option value="Dr.">Dr.</option>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Logs and History | Smart Attendance Management System</title>
+    
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-light">
+
+    <!-- Top Navigation Bar -->
+    <nav class="navbar navbar-dark bg-dark px-3 py-2">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="lecturer_index.html">
+                <i class="fa-solid fa-arrow-left me-2"></i> Back to Dashboard
+            </a>
+            <span class="navbar-text text-white small d-none d-md-inline">
+                <i class="fa-solid fa-clock me-1"></i> Student Attendance Logs
+            </span>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <div class="container py-4">
+        
+        <!-- Summary Cards -->
+        <div class="row g-3 mb-4">
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm p-3 rounded-3 bg-white">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <span class="text-muted extra-small fw-bold text-uppercase d-block mb-1">Overall Attendance</span>
+                            <h3 class="fw-bold mb-0 text-success" id="overallPercentage">88%</h3>
+                        </div>
+                        <span class="badge bg-success-subtle text-success p-3 rounded-circle">
+                            <i class="fa-solid fa-chart-line fs-4"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm p-3 rounded-3 bg-white">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <span class="text-muted extra-small fw-bold text-uppercase d-block mb-1">Sessions Attended</span>
+                            <h3 class="fw-bold mb-0 text-primary" id="attendedCount">22 / 25</h3>
+                        </div>
+                        <span class="badge bg-primary-subtle text-primary p-3 rounded-circle">
+                            <i class="fa-solid fa-user-check fs-4"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm p-3 rounded-3 bg-white">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <span class="text-muted extra-small fw-bold text-uppercase d-block mb-1">Missed Sessions</span>
+                            <h3 class="fw-bold mb-0 text-danger" id="missedCount">3</h3>
+                        </div>
+                        <span class="badge bg-danger-subtle text-danger p-3 rounded-circle">
+                            <i class="fa-solid fa-user-xmark fs-4"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logs Table Card -->
+        <div class="card border-0 shadow-sm rounded-3">
+            <div class="card-body p-4">
+                
+                <!-- Filter Controls -->
+                <div class="row g-3 mb-4 align-items-center">
+                    <div class="col-md-6">
+                        <h5 class="fw-bold mb-0"><i class="fa-solid fa-list-check me-2 text-warning"></i> Recent Session Logs</h5>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select form-select-sm" id="courseFilter">
+                            <option value="ALL" selected>All Courses</option>
+                            <option value="SEN226">SEN 226</option>
+                            <option value="INS222">INS 222</option>
+                            <option value="SEN227">SEN 227</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select form-select-sm" id="statusFilter">
+                            <option value="ALL" selected>All Statuses</option>
+                            <option value="PRESENT">Present</option>
+                            <option value="ABSENT">Absent</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Logs Table -->
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead class="table-light extra-small text-uppercase text-muted">
+                            <tr>
+                                <th>Course</th>
+                                <th>Date & Time</th>
+                                <th>Verification Method</th>
+                                <th>Status</th>
+                                <th class="text-end">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="logsTableBody" class="small">
+                            <!-- Example Row 1: Present via Bluetooth -->
+                            <tr>
+                                <td>
+                                    <strong class="d-block">SEN 226</strong>
+                                    <span class="text-muted extra-small">Software Engineering Principles</span>
+                                </td>
+                                <td>Aug 18, 2026 | 09:15 AM</td>
+                                <td><span class="badge bg-light text-dark border"><i class="fa-solid fa-bluetooth me-1 text-primary"></i> Bluetooth Beacon</span></td>
+                                <td><span class="badge bg-success-subtle text-success fw-bold"><i class="fa-solid fa-circle-check me-1"></i> Present</span></td>
+                                <td class="text-end"><span class="text-muted extra-small">Verified</span></td>
+                            </tr>
+                            
+                            <!-- Example Row 2: Present via Passcode -->
+                            <tr>
+                                <td>
+                                    <strong class="d-block">INS 222</strong>
+                                    <span class="text-muted extra-small">Information Systems</span>
+                                </td>
+                                <td>Aug 16, 2026 | 11:05 AM</td>
+                                <td><span class="badge bg-light text-dark border"><i class="fa-solid fa-key me-1 text-warning"></i> 30-Min Passcode</span></td>
+                                <td><span class="badge bg-success-subtle text-success fw-bold"><i class="fa-solid fa-circle-check me-1"></i> Present</span></td>
+                                <td class="text-end"><span class="text-muted extra-small">Verified</span></td>
+                            </tr>
+
+                            <!-- Example Row 3: Missed Session with Appeal Button -->
+                            <tr>
+                                <td>
+                                    <strong class="d-block">SEN 227</strong>
+                                    <span class="text-muted extra-small">Database Systems</span>
+                                </td>
+                                <td>Aug 14, 2026 | 02:00 PM</td>
+                                <td><span class="badge bg-light text-muted border">—</span></td>
+                                <td><span class="badge bg-danger-subtle text-danger fw-bold"><i class="fa-solid fa-circle-xmark me-1"></i> Absent</span></td>
+                                <td class="text-end">
+                                    <a href="corrections.html?course=SEN227&date=2026-08-14" class="btn btn-sm btn-outline-warning text-dark fw-bold py-1 px-2">
+                                        <i class="fa-solid fa-triangle-exclamation me-1"></i> Appeal
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Local Offline Scripts -->
+    <script src="../assets/vendor/js/bootstrap.bundle.min.js"></script>
+    <script src="student_app.js"></script>
+</body>
+</html>

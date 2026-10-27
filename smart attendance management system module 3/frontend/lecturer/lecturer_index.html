@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecturer Dashboard | Smart Attendance Management System</title>
+    
+    <!-- Bootstrap 5 CSS CDN link for part of the css]-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-light">
+
+    <!-- Top Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3 py-2 shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="lecturer_index.html">
+                <i class="fa-solid fa-graduation-cap text-warning me-2"></i> SmartAttendance <span class="badge bg-primary text-white ms-1 fs-6">Lecturer</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#lecturerNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="lecturerNav">
+                <ul class="navbar-nav me-auto ms-3">
+                    <li class="nav-item">
+                        <a class="nav-link active fw-bold" href="lecturer_index.html"><i class="fa-solid fa-gauge me-1"></i> Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="generate_session.html"><i class="fa-solid fa-broadcast-tower me-1"></i> Start Session</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="attendance_logs.html"><i class="fa-solid fa-chart-line me-1"></i> Reports & Logs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="review_corrections.html">
+                            <i class="fa-solid fa-clipboard-check me-1"></i> Appeals 
+                            <span class="badge bg-warning text-dark ms-1">3</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center gap-3">
+                    <div class="text-white small text-end d-none d-md-block">
+                        <strong class="d-block">Dr. Lecturer</strong>
+                        <span class="text-muted extra-small">Software Engineering Dept.</span>
+                    </div>
+                    <a href="../index.html" class="btn btn-sm btn-outline-light"><i class="fa-solid fa-right-from-bracket me-1"></i> Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container py-4">
+        
+        <!-- Welcome & Quick Action Hero Banner -->
+        <div class="card border-0 shadow-sm rounded-3 bg-dark text-white mb-4">
+            <div class="card-body p-4 p-md-5">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <span class="badge bg-primary fw-bold text-uppercase px-3 py-1 mb-2">Session Control</span>
+                        <h2 class="fw-bold mb-2">Ready for Class?</h2>
+                        <p class="mb-0 text-white-50">Broadcast a Bluetooth beacon or generate a 30-minute temporary passcode to begin tracking live student attendance.</p>
+                    </div>
+                    <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                        <a href="generate_session.html" class="btn btn-warning text-dark fw-bold px-4 py-2 shadow-sm">
+                            <i class="fa-solid fa-play me-1"></i> Start New Session
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Metrics Overview Cards -->
+        <div class="row g-3 mb-4">
+            <div class="col-md-3">
+                <div class="card border-0 shadow-sm p-3 rounded-3 bg-white h-100">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <span class="text-muted extra-small fw-bold text-uppercase d-block mb-1">Assigned Courses</span>
+                            <h3 class="fw-bold mb-0 text-primary">3</h3>
+                        </div>
+                        <span class="badge bg-primary-subtle text-primary p-3 rounded-circle">
+                            <i class="fa-solid fa-book-bookmark fs-4"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card border-0 shadow-sm p-3 rounded-3 bg-white h-100">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <span class="text-muted extra-small fw-bold text-uppercase d-block mb-1">Total Enrolled</span>
+                            <h3 class="fw-bold mb-0 text-dark">142</h3>
+                        </div>
+                        <span class="badge bg-light text-dark border p-3 rounded-circle">
+                            <i class="fa-solid fa-users fs-4"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card border-0 shadow-sm p-3 rounded-3 bg-white h-100">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <span class="text-muted extra-small fw-bold text-uppercase d-block mb-1">Avg. Attendance Rate</span>
+                            <h3 class="fw-bold mb-0 text-success">86%</h3>
+                        </div>
+                        <span class="badge bg-success-subtle text-success p-3 rounded-circle">
+                            <i class="fa-solid fa-chart-pie fs-4"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card border-0 shadow-sm p-3 rounded-3 bg-white h-100">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <span class="text-muted extra-small fw-bold text-uppercase d-block mb-1">Pending Appeals</span>
+                            <h3 class="fw-bold mb-0 text-warning">3</h3>
+                        </div>
+                        <span class="badge bg-warning-subtle text-warning p-3 rounded-circle">
+                            <i class="fa-solid fa-triangle-exclamation fs-4"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course Cards & Quick Actions -->
+        <h5 class="fw-bold mb-3"><i class="fa-solid fa-layer-group text-primary me-2"></i> Active Course Management</h5>
+        <div class="row g-4 mb-4">
+            
+            <!-- SEN 226 Card -->
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm rounded-3 h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="badge bg-primary-subtle text-primary fw-bold">SEN 226</span>
+                            <span class="extra-small text-muted">3 Credit Units</span>
+                        </div>
+                        <h5 class="fw-bold">Software Engineering Principles</h5>
+                        <p class="text-muted small mb-3">Enrolled: 48 Students</p>
+                        <div class="d-grid gap-2">
+                            <a href="generate_session.html?course=SEN226" class="btn btn-sm btn-outline-primary fw-bold">
+                                <i class="fa-solid fa-tower-broadcast me-1"></i> Start Attendance
+                            </a>
+                            <a href="attendance_logs.html?course=SEN226" class="btn btn-sm btn-light text-muted fw-bold">
+                                <i class="fa-solid fa-file-export me-1"></i> View Course Report
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INS 222 Card -->
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm rounded-3 h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="badge bg-info-subtle text-info fw-bold">INS 222</span>
+                            <span class="extra-small text-muted">3 Credit Units</span>
+                        </div>
+                        <h5 class="fw-bold">Information Systems</h5>
+                        <p class="text-muted small mb-3">Enrolled: 52 Students</p>
+                        <div class="d-grid gap-2">
+                            <a href="generate_session.html?course=INS222" class="btn btn-sm btn-outline-primary fw-bold">
+                                <i class="fa-solid fa-tower-broadcast me-1"></i> Start Attendance
+                            </a>
+                            <a href="attendance_logs.html?course=INS222" class="btn btn-sm btn-light text-muted fw-bold">
+                                <i class="fa-solid fa-file-export me-1"></i> View Course Report
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEN 227 Card -->
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm rounded-3 h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="badge bg-secondary-subtle text-secondary fw-bold">SEN 227</span>
+                            <span class="extra-small text-muted">3 Credit Units</span>
+                        </div>
+                        <h5 class="fw-bold">Database Systems</h5>
+                        <p class="text-muted small mb-3">Enrolled: 42 Students</p>
+                        <div class="d-grid gap-2">
+                            <a href="generate_session.html?course=SEN227" class="btn btn-sm btn-outline-primary fw-bold">
+                                <i class="fa-solid fa-tower-broadcast me-1"></i> Start Attendance
+                            </a>
+                            <a href="attendance_logs.html?course=SEN227" class="btn btn-sm btn-light text-muted fw-bold">
+                                <i class="fa-solid fa-file-export me-1"></i> View Course Report
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Recent Class Sessions Activity Table -->
+        <div class="card border-0 shadow-sm rounded-3">
+            <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="fw-bold mb-0"><i class="fa-solid fa-clock-rotate-left text-secondary me-2"></i> Recent Sessions</h5>
+                    <a href="attendance_logs.html" class="btn btn-sm btn-link text-decoration-none">View All Reports <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead class="table-light extra-small text-uppercase text-muted">
+                            <tr>
+                                <th>Course</th>
+                                <th>Date & Time</th>
+                                <th>Method</th>
+                                <th>Turnout</th>
+                                <th class="text-end">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="small">
+                            <tr>
+                                <td><strong class="d-block">SEN 226</strong> Software Engineering</td>
+                                <td>Aug 18, 2026 | 09:00 AM</td>
+                                <td><span class="badge bg-light text-dark border"><i class="fa-solid fa-bluetooth text-primary me-1"></i> Bluetooth</span></td>
+                                <td><span class="fw-bold text-success">44 / 48</span> (91%)</td>
+                                <td class="text-end"><a href="attendance_logs.html?course=SEN226" class="btn btn-sm btn-outline-secondary py-0">Details</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong class="d-block">INS 222</strong> Information Systems</td>
+                                <td>Aug 16, 2026 | 11:00 AM</td>
+                                <td><span class="badge bg-light text-dark border"><i class="fa-solid fa-key text-warning me-1"></i> Passcode</span></td>
+                                <td><span class="fw-bold text-primary">45 / 52</span> (86%)</td>
+                                <td class="text-end"><a href="attendance_logs.html?course=INS222" class="btn btn-sm btn-outline-secondary py-0">Details</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lecturer_app.js"></script>
+</body>
+</html>
